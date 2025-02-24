@@ -1,0 +1,30 @@
+Algorithm Explanation:
+Initialization:
+
+A queue (q) is created to help with the BFS traversal.
+The visited array for the graph is updated to mark the starting vertex (start) as visited.
+The starting vertex is enqueued into the queue.
+BFS Traversal:
+
+While the queue is not empty:
+The front vertex (currentVertex) is dequeued and processed (e.g., printed).
+The algorithm checks all the vertices adjacent to currentVertex using the adjacency matrix (G->adjMat).
+If an adjacent vertex is found (G->adjMat[currentVertex][i] == 1) and it has not been visited (G->visited[i] == 0), it is marked as visited and enqueued for processing.
+Termination:
+
+The BFS traversal ends when the queue becomes empty, meaning all reachable vertices have been visited.
+Key Points:
+Data Structures:
+A queue is used to ensure that vertices are processed in the correct BFS order (FIFO).
+The visited array is used to prevent revisiting nodes and forming loops.
+Graph Representation:
+The graph is represented as an adjacency matrix, where G->adjMat[i][j] == 1 means there is an edge between vertex i and vertex j.
+Output:
+The algorithm prints the vertices in BFS traversal order starting from the given start vertex.
+Complexity Analysis:
+Time Complexity: 𝑂(𝑉2) 
+Checking adjacency in an adjacency matrix takes 𝑂(𝑉)
+O(V) for each vertex, and there are 𝑉
+V vertices.
+Space Complexity: 𝑂(𝑉)
+Space is required for the queue and the visited array.

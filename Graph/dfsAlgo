@@ -1,0 +1,22 @@
+
+The provided code implements the Depth-First Search (DFS) algorithm using an explicit stack to simulate the recursion stack. This method is an iterative implementation of DFS for a graph represented as an adjacency matrix.
+
+Algorithm Explanation:
+Initialization:
+
+A stack is created to manage vertices during the DFS traversal.
+The starting vertex (startVertex) is marked as visited and pushed onto the stack.
+DFS Traversal:
+
+While the stack is not empty:
+Pop the top vertex from the stack (currentVertex) and process it (e.g., print it).
+Traverse all vertices (in reverse order to maintain a consistent visiting order) and check for adjacent vertices:
+If a vertex is adjacent (G->adjMat[currentVertex][i] == 1) and has not been visited (G->visited[i] == 0):
+Push the vertex onto the stack.
+Mark it as visited to avoid revisiting.
+Termination:
+
+The DFS traversal ends when the stack becomes empty, meaning all reachable vertices have been visited.
+Cleanup:
+
+Free the dynamically allocated stack to release memory

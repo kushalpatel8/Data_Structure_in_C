@@ -1,0 +1,79 @@
+Functions:
+swap function:
+
+Swaps two integers using pointers.
+Used to rearrange elements in the array.
+partition function:
+
+Purpose: Reorganizes the array such that:
+All elements smaller than or equal to the pivot element (pe) are placed to its left.
+All elements greater than the pivot are placed to its right.
+The pivot is chosen as the last element of the array (arr[ei]).
+It returns the partition index (pi), which is the final position of the pivot after rearrangement.
+Steps in partition:
+
+Start with an index i = si - 1 (where si is the starting index).
+Traverse the array from si to ei - 1:
+If arr[j] <= pivot, increment i and swap arr[i] with arr[j].
+Swap the pivot (arr[ei]) with arr[i+1] to place the pivot in its correct position.
+Return the partition index i + 1.
+QuikSort function:
+
+Implements the recursive part of the QuickSort algorithm.
+Base case: If the subarray has one or no elements (si >= ei), it’s already sorted.
+Recursive case: Divide the array using partition:
+Sort the left subarray (si to pi-1).
+Sort the right subarray (pi+1 to ei).
+main function:
+
+Initializes the array and prints the original array.
+Calls QuikSort on the entire array.
+Prints the sorted array.
+Dry Run of the Code
+Input:
+arr[] = {5, 1, 8, 2, 7, 6, 3, 4}
+
+Step-by-Step Execution:
+Initial Call:
+
+QuikSort(arr, 0, 7) (entire array)
+partition(arr, 0, 7), pivot = 4 (arr[7]).
+Partitioning around pivot 4:
+
+Traverse from index 0 to 6:
+
+arr[0] = 5 → not <= 4 → skip.
+arr[1] = 1 → <= 4 → increment i to 0 → swap arr[0] and arr[1].
+Array becomes: {1, 5, 8, 2, 7, 6, 3, 4}
+arr[2] = 8 → not <= 4 → skip.
+arr[3] = 2 → <= 4 → increment i to 1 → swap arr[1] and arr[3].
+Array becomes: {1, 2, 8, 5, 7, 6, 3, 4}
+arr[4] = 7, arr[5] = 6 → both not <= 4 → skip.
+arr[6] = 3 → <= 4 → increment i to 2 → swap arr[2] and arr[6].
+Array becomes: {1, 2, 3, 5, 7, 6, 8, 4}
+Place pivot in correct position:
+
+Swap arr[3] and arr[7].
+Array becomes: {1, 2, 3, 4, 7, 6, 8, 5}.
+Partition index = 3.
+
+Recursive Calls:
+
+Left subarray: QuikSort(arr, 0, 2) → {1, 2, 3}:
+Pivot = 3 → already sorted.
+Right subarray: QuikSort(arr, 4, 7) → {7, 6, 8, 5}:
+Partition pivot = 5:
+{1, 2, 3, 4, 5, 6, 8, 7}
+Further recursive calls sort {6} and {8, 7}.
+Final Sorted Array:
+
+{1, 2, 3, 4, 5, 6, 7, 8}.
+Complexity
+Time Complexity:
+
+Best/Average Case: 𝑂(𝑛log𝑛)
+O(nlogn) (balanced partitioning).
+Worst Case: 𝑂(𝑛2)O(n 2) (unbalanced partitioning, e.g., sorted array with poor pivot choice).
+Space Complexity:𝑂(log𝑛)
+O(logn) (recursive stack for function calls).
+This algorithm is efficient, especially with large datasets, but care must be taken to choose good pivot values to avoid worst-case scenarios.

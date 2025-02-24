@@ -1,0 +1,52 @@
+The code implements Quicksort using the first element as the pivot. Below is the explanation of each part:
+
+swap function: Swaps two integers using their pointers.
+
+partition function:
+
+The first element (arr[si]) is selected as the pivot.
+A partition index (pidx) keeps track of the position where the pivot will be placed.
+As we iterate through the array from si + 1 to ei, any element smaller than or equal to the pivot is swapped with the element at pidx + 1, and pidx is incremented.
+At the end of the loop, the pivot is swapped with the element at pidx, so it is in its correct position.
+QuikSort function:
+
+Recursively applies quicksort to the sub-arrays to the left and right of the pivot position.
+Main Function:
+
+Defines the input array and prints the original and sorted arrays.
+Dry Run
+Input array: {5, 1, 8, 2, 7, 6, 3, 4}
+
+Step 1: First Call to QuikSort(arr, 0, 7)
+Pivot: arr[0] = 5
+Partition:
+i = 1, arr[1] = 1 (<= 5): Increment pidx to 1, swap arr[1] with itself.
+i = 2, arr[2] = 8 (> 5): No action.
+i = 3, arr[3] = 2 (<= 5): Increment pidx to 2, swap arr[2] and arr[3]. Array: {5, 1, 2, 8, 7, 6, 3, 4}.
+i = 4, arr[4] = 7 (> 5): No action.
+i = 5, arr[5] = 6 (> 5): No action.
+i = 6, arr[6] = 3 (<= 5): Increment pidx to 3, swap arr[3] and arr[6]. Array: {5, 1, 2, 3, 7, 6, 8, 4}.
+i = 7, arr[7] = 4 (<= 5): Increment pidx to 4, swap arr[4] and arr[7]. Array: {5, 1, 2, 3, 4, 6, 8, 7}.
+Swap pivot (arr[0]) with arr[4]. Array: {4, 1, 2, 3, 5, 6, 8, 7}.
+Partition index: 4.
+Step 2: Recursive Calls
+QuikSort(arr, 0, 3):
+
+Pivot: arr[0] = 4.
+Partition:
+Array becomes: {3, 1, 2, 4, 5, 6, 8, 7}.
+Partition index: 3.
+Recursive calls for {3, 1, 2} and {5, 6, 8, 7}:
+
+Sorting {3, 1, 2}:
+Pivot: 3, results in {2, 1, 3}.
+Recursive calls sort {2, 1} into {1, 2}.
+Sorting {5, 6, 8, 7}:
+Pivot: 5, results in {5, 6, 7, 8}.
+Final Sorted Array
+{1, 2, 3, 4, 5, 6, 7, 8}
+
+Key Points
+The pivot is always the first element in the current sub-array.
+The partitioning step rearranges the array so that the pivot is placed in its correct position.
+Recursive calls ensure that the sub-arrays to the left and right of the pivot are sorted.

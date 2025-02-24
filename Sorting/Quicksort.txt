@@ -1,0 +1,59 @@
+Key Concepts
+Partitioning:
+
+A pivot element (chosen as the middle element of the range) is used to divide the array into two parts.
+Elements less than or equal to the pivot are placed to its left, and elements greater than the pivot are placed to its right.
+The partition function performs this operation and returns the final index of the pivot.
+Recursive Sorting:
+
+Once the array is partitioned, the QuikSort function is called recursively on the left and right subarrays.
+Function Details
+swap():
+Swaps two elements of the array using pointers.
+partition():
+Divides the array into two parts relative to a pivot element:
+The pivot element is initially chosen as the middle element of the range.
+Counts how many elements are less than or equal to the pivot to determine its final position (pidx).
+Swaps the pivot with the element at pidx to place it in its final position.
+Adjusts elements around the pivot such that:
+All elements to the left of the pivot are smaller.
+All elements to the right are larger.
+Returns the final index of the pivot.
+QuikSort():
+Recursively calls itself to sort the left and right parts of the array around the pivot.
+Dry Run
+Input:
+Array: {5, 1, 8, 2, 7, 6, 3, 4}
+Size: n = 8
+
+Initial State:
+QuikSort(arr, 0, 7) is called.
+First Partition (si = 0, ei = 7):
+Pivot element (pe): arr[3] = 2.
+Count of elements ≤ pivot: 1 (only 1).
+Final pivot index (pidx): si + count = 0 + 1 = 1.
+Swap pivot with element at pidx: Array becomes {5, 2, 8, 1, 7, 6, 3, 4}.
+Adjust elements around the pivot:
+Left of pivot: {1}.
+Right of pivot: {5, 8, 7, 6, 3, 4}.
+Partition returns pidx = 1.
+Recursive Calls:
+QuikSort(arr, 0, 0):
+
+Base case: No sorting needed.
+QuikSort(arr, 2, 7):
+
+Pivot: arr[4] = 7.
+Count: 3 (elements ≤ pivot: 5, 6, 3).
+Pivot placed at pidx = 4.
+Adjusted array: {1, 2, 5, 3, 7, 6, 8, 4}.
+Sorting Continues:
+Recursive calls break down the array further until fully sorted.
+Final Sorted Array:
+{1, 2, 3, 4, 5, 6, 7, 8}
+
+Explanation of Key Logic
+The middle element is chosen as the pivot for simplicity.
+The counting mechanism ensures that the pivot is placed at its correct sorted position (pidx).
+The two pointers (i and j) adjust the elements on either side of the pivot efficiently.
+This approach follows the in-place sorting technique, requiring no additional space for a secondary array.
